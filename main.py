@@ -1,14 +1,16 @@
 import telebot
 from telebot import types
 import lyricsgenius
+import os  # Essencial para ler as variáveis de ambiente
 
-# DICA: Apague esses tokens e gere novos apos testar!
-TELEGRAM_TOKEN = "8985060767:AAFNCBwvBsgVQhFTWnZeN9AnRGwOYhqKuLw"
-GENIUS_TOKEN = "FhgDIERLr7Ia7w8qZZuTKg0ueWiv0d19A50SlRIqH5q8wnmVAis0ltBAGOvAVOR3"
+# O Render vai injetar esses valores que você acabou de configurar na interface
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+GENIUS_TOKEN = os.environ.get("GENIUS_TOKEN")
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 genius = lyricsgenius.Genius(GENIUS_TOKEN)
 genius.verbose = False 
+# ... o restante do seu código continua abaixo ...
 
 buscas_recentes = {}
 
